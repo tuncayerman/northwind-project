@@ -7,7 +7,7 @@ import * as customerActions from "../redux/actions/customerActions";
 import customerReducer from "../redux/reducers/customerReducer";
 
 class Customers extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.actions.fetchCustomer();
   }
   

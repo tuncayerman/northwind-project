@@ -12,7 +12,7 @@ export function getOrders(){
 
 function getOrdersSuccess(data){
     return{
-        type: actionTypes.SETORDER,
+        type: actionTypes.SETTABLEDATA,
         payload: data
     }
 }

@@ -14,7 +14,7 @@ export function getCustomers() {
 
 export function getCustomersSuccess(data) {
   return {
-    type: actionTypes.SETCUSTOMER,
+    type: actionTypes.SETTABLEDATA,
     payload: data,
   };
 }

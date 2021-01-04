@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Table, Container } from "react-bootstrap";
 import SmartPagination from "./SmartPagination";
 
-export default class SmartTable extends Component {
+class SmartTable extends Component {
   componentDidMount(){
     console.log(this.props.columns);
    
@@ -12,7 +14,7 @@ export default class SmartTable extends Component {
   }
 
   createTableBody(){
-    const data = this.props.data;
+    const data = this.props.tableData;
     let lineNo=1;
     let fields=[];
     for(const index in this.props.columns){
@@ -50,3 +52,18 @@ export default class SmartTable extends Component {
     );
   }
 }
+function mapStateToProps(state){
+  return{
+    tableData:state.tableDataReducer,
+
+  }
+}
+function mapDispatchToProps(dispatch){
+  return{
+    actions:{
+
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SmartTable);
