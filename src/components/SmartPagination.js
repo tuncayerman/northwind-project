@@ -17,10 +17,17 @@ class SmartPagination extends Component {
     console.log(this.props.currentShowCount);
     console.log(totalPage);
     // for (let number = 1; number <= totalPage; number++) {
+<<<<<<< HEAD
     //     items.push(
     //   <Pagination.Item key={number} active={number === active}>
     //     {number}
     //   </Pagination.Item>)
+=======
+    //    items.push(
+    //  <Pagination.Item key={number} active={number === active}>
+    //    {number}
+    //  </Pagination.Item>)
+>>>>>>> 84374ee18264c2227c0a558b7433c3906de7be38
     // }
     return items
   }
