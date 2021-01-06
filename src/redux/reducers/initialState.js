@@ -3,5 +3,6 @@ export default{
     order:[],
     currentShowCount:10,
     tableData:[],
+    currentPage:1,
     
 }
