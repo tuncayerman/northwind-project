@@ -6,3 +6,10 @@ export function setCurrentPage(data){
         payload:data
     }
 }
+
+export function setCurrentShowCount(data){
+    return{
+        type:actionTypes.SETCURRENTSHOWCOUNT,
+        payload:data
+    }
+}

@@ -4,11 +4,18 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import * as customerActions from "../redux/actions/customerActions";
-import customerReducer from "../redux/reducers/customerReducer";
+import * as tableActions from "../redux/actions/tableActions";
 
 class Customers extends Component {
   componentWillMount() {
     this.props.actions.fetchCustomer();
+    this.props.actions.getBaseCustomers();
+  }
+  
+  componentDidUpdate(){
+    this.props.actions.fetchCustomer();
+    //this.props.actions.getBaseCustomers();
+    
   }
   
 
@@ -30,12 +37,12 @@ class Customers extends Component {
         type: "String",
       },
     ];
-
     return (
       <div>
         <SmartTable
           columns={columns}
-          data={this.props.customers}/>
+          dataType="customer"
+          title="Customers"/>
       </div>
     );
   }
@@ -44,14 +51,16 @@ function mapStateToProps(state) {
   return {
     //stateler gelecek
     customers: state.customerReducer,
+    generalData: state.generalDataReducer,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      //actions gelecek
       fetchCustomer: bindActionCreators(customerActions.getCustomers, dispatch),
+      getBaseCustomers: bindActionCreators(customerActions.getBaseCustomers,dispatch),
+      setTableData: bindActionCreators(tableActions.setTableData,dispatch),
     },
   };
 }
