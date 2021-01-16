@@ -1,4 +1,4 @@
-import react, { Component } from "react";
+import { Component } from "react";
 //react-bootstrap
 import { Col, Container, Row } from "react-bootstrap";
 
@@ -7,35 +7,22 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 //utils
-import {showValue} from "../utils/editData";
+import { showValue } from "../utils/editData";
 
 //actions
 import * as productActions from "../redux/actions/productActions";
 
-  
-
 class OrderDetail extends Component {
-  componentDidMount(){
-    console.log(this.props.orderDetail)
+  componentDidMount() {
     let id = this.props.orderDetail.details[0].productId;
-    if(id !== undefined)
-      this.props.actions.getProductById(id);
+    if (id !== undefined) this.props.actions.getProductById(id);
   }
-  componentDidUpdate(){
-    console.log(this.props.orderDetail)
-    
-  }
+  componentDidUpdate() {}
   render() {
     let orderDetail = this.props.orderDetail;
     let address = this.props.orderDetail.shipAddress;
     let details = this.props.orderDetail.details[0];
-    let product={name:""};
-    // if(orderDetail.details.productId!== undefined)
-    //   this.props.actions.getProductById(details.productId);
-    // if(this.props.product !==undefined)
-    //   product = this.props.product;
-    
-      
+
     return (
       <Container className="">
         <div className="bg-warning d-flex justify-content-center rounded-pill mt-2">
@@ -46,13 +33,15 @@ class OrderDetail extends Component {
           <Col className="border-bottom border-dark">
             <Row>
               <Col className="font-weight-bold">Order Date:</Col>
-              <Col className="text-left">{showValue(orderDetail.orderDate,"Date")}</Col>
+              <Col className="text-left">
+                {showValue(orderDetail.orderDate, "Date")}
+              </Col>
             </Row>
           </Col>
           <Col className="border-bottom border-dark">
             <Row>
               <Col className="font-weight-bold">Required Date:</Col>
-              <Col>{showValue(orderDetail.requiredDate,"Date")}</Col>
+              <Col>{showValue(orderDetail.requiredDate, "Date")}</Col>
             </Row>
           </Col>
         </Row>
@@ -60,7 +49,9 @@ class OrderDetail extends Component {
           <Col className="border-bottom border-dark">
             <Row>
               <Col className="font-weight-bold">Shipped Date:</Col>
-              <Col className="text-left">{showValue(orderDetail.shippedDate,"Date")}</Col>
+              <Col className="text-left">
+                {showValue(orderDetail.shippedDate, "Date")}
+              </Col>
             </Row>
           </Col>
           <Col className="border-bottom border-dark">
@@ -84,7 +75,6 @@ class OrderDetail extends Component {
             </Row>
           </Col>
         </Row>
-
 
         <div className=" d-flex justify-content-start rounded-pill mt-5">
           <h3>Address Details</h3>
@@ -133,7 +123,6 @@ class OrderDetail extends Component {
           </Col>
         </Row>
 
-
         <div className=" d-flex justify-content-start rounded-pill mt-5">
           <h3>Product Details</h3>
         </div>
@@ -165,8 +154,6 @@ class OrderDetail extends Component {
             </Row>
           </Col>
         </Row>
-        
-
       </Container>
     );
   }
@@ -174,15 +161,18 @@ class OrderDetail extends Component {
 
 function mapStateToProps(state) {
   return {
-    orderDetail:state.orderDetailReducer,
-    product:state.productReducer,
+    orderDetail: state.orderDetailReducer,
+    product: state.productReducer,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getProductById:bindActionCreators(productActions.getProductById,dispatch),
+      getProductById: bindActionCreators(
+        productActions.getProductById,
+        dispatch
+      ),
     },
   };
 }

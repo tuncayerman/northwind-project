@@ -20,7 +20,6 @@ function getOrdersSuccess(data) {
 }
 
 export function getBaseOrders() {
-  let url = "";
   return async (dispatch) => {
     return await axios
       .get("https://northwind.now.sh/api/orders")

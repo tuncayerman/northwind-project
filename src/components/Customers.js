@@ -11,13 +11,10 @@ class Customers extends Component {
     this.props.actions.fetchCustomer();
     this.props.actions.getBaseCustomers();
   }
-  
-  componentDidUpdate(){
+
+  componentDidUpdate() {
     this.props.actions.fetchCustomer();
-    //this.props.actions.getBaseCustomers();
-    
   }
-  
 
   render() {
     let columns = [
@@ -39,17 +36,14 @@ class Customers extends Component {
     ];
     return (
       <div>
-        <SmartTable
-          columns={columns}
-          dataType="customer"
-          title="Customers"/>
+        <SmartTable columns={columns} dataType="customer" title="Customers" />
       </div>
     );
   }
 }
 function mapStateToProps(state) {
   return {
-    //stateler gelecek
+    //stateler
     customers: state.customerReducer,
     generalData: state.generalDataReducer,
   };
@@ -59,8 +53,11 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       fetchCustomer: bindActionCreators(customerActions.getCustomers, dispatch),
-      getBaseCustomers: bindActionCreators(customerActions.getBaseCustomers,dispatch),
-      setTableData: bindActionCreators(tableActions.setTableData,dispatch),
+      getBaseCustomers: bindActionCreators(
+        customerActions.getBaseCustomers,
+        dispatch
+      ),
+      setTableData: bindActionCreators(tableActions.setTableData, dispatch),
     },
   };
 }

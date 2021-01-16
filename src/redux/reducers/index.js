@@ -1,4 +1,4 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import customerReducer from "./customerReducer";
 import orderListReducer from "./orderListReducer";
 import currentShowCountReducer from "./currentShowCountReducer";
@@ -10,16 +10,15 @@ import orderDetailReducer from "./orderDetailReducer";
 import productReducer from "./productReducer";
 
 const rootReducer = combineReducers({
-    customerReducer,
-    orderListReducer,
-    currentShowCountReducer,
-    tableDataReducer,
-    currentPageReducer,
-    genralDataReducer,
-    customerDetailReducer,
-    orderDetailReducer,
-    productReducer,
-})
-
+  customerReducer,
+  orderListReducer,
+  currentShowCountReducer,
+  tableDataReducer,
+  currentPageReducer,
+  genralDataReducer,
+  customerDetailReducer,
+  orderDetailReducer,
+  productReducer,
+});
 
 export default rootReducer;

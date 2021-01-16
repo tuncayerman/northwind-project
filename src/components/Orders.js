@@ -8,18 +8,18 @@ import { bindActionCreators } from "redux";
 
 //actions
 import * as orderActions from "../redux/actions/orderActions";
-import * as customerActions from "../redux/actions/customerActions"
+import * as customerActions from "../redux/actions/customerActions";
 
 class Orders extends Component {
   componentDidMount() {
+    console.log("fcergvrdefbvgrtbrtbrtd");
     this.props.actions.fetchOrders();
     this.props.actions.fetchCustomers();
     this.props.actions.fetchBaseOrders();
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.props.actions.fetchOrders();
     this.props.actions.fetchCustomers();
-    //this.props.actions.fetchBaseOrders();
   }
 
   render() {
@@ -57,7 +57,7 @@ class Orders extends Component {
     ];
     return (
       <div>
-        <SmartTable columns={columns}  dataType="order" title="Orders" />
+        <SmartTable columns={columns} dataType="order" title="Orders" />
       </div>
     );
   }
@@ -73,8 +73,11 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       fetchOrders: bindActionCreators(orderActions.getOrders, dispatch),
-      fetchCustomers: bindActionCreators(customerActions.getBaseCustomers,dispatch),
-      fetchBaseOrders: bindActionCreators(orderActions.getBaseOrders,dispatch),
+      fetchCustomers: bindActionCreators(
+        customerActions.getBaseCustomers,
+        dispatch
+      ),
+      fetchBaseOrders: bindActionCreators(orderActions.getBaseOrders, dispatch),
     },
   };
 }
